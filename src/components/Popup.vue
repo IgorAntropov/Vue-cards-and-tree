@@ -2,7 +2,7 @@
   <div class="popup-wrapper flex-center" ref="popup_wrapper">
     <div class="popup">
       <div class="popup-header flex-text-between">
-        <span>{{imageName}}</span>
+        <span></span>
         <button
             @click.stop="closePopup"
         >
@@ -29,9 +29,6 @@ export default {
   name: "PopupCmp",
   props: {
     imageSrc: {
-      type: String
-    },
-    imageName: {
       type: String
     }
   },

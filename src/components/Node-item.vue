@@ -4,7 +4,7 @@
         class="flex-center"
         v-bind:class="{treeLine: isFolder}"
     >
-      <span>{{ item.name }}</span>
+      <span>{{ item.name ? item.name : "Pretend it's a name: " + item.timestamp }}</span>
       <span v-if="isFolder">{{ itemSuffix }}</span>
       <img
           v-if="item.image"
@@ -22,8 +22,7 @@
   <Popup
       v-if="isBigImg"
       @closePopup="closePopup"
-      :imageSrc="item.image"
-      :imageName="item.name"
+      :imageSrc="item.image.split('/')[1]"
   >
   </Popup>
 </template>
@@ -53,7 +52,7 @@ export default {
       return `  [${this.isOpen ? '-' : '+'}]`;
     },
     getImgUrl() {
-      return require(`@/assets/images/${this.item.image}`);
+      return require(`@/assets/images/${this.item.image.split('/')[1]}`);
     },
   },
   methods: {

@@ -23,8 +23,7 @@
   <Popup
       v-if="isBigImg"
       @closePopup="closePopup"
-      :imageSrc="item.image"
-      :imageName="item.name"
+      :imageSrc="item.image.split('/')[1]"
   >
   </Popup>
 </template>

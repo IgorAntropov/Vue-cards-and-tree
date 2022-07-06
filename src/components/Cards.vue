@@ -16,7 +16,7 @@
     </label>
     <label class="flex-text-between">
       <span class="bold">Name</span>
-      <input type="radio" value="name" v-model="selected" @change="sort" />
+      <input type="radio" value="image" v-model="selected" @change="sort" />
     </label>
     <label class="flex-text-between">
       <span class="bold">Category</span>

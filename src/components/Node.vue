@@ -61,5 +61,7 @@ export default {
 </script>
 
 <style scoped>
-
+.node {
+  max-height: 500px;
+}
 </style>
