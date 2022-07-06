@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import NodeItem from "@/components/Node-item";
+import NodeItem from "@/components/tree/Node-item";
 
 export default {
   name: "NodeCmp",

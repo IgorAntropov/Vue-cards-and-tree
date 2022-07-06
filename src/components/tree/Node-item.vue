@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import Popup from "@/components/Popup";
+import Popup from "@/components/supports/Popup";
 
 export default {
   name: "NodeItemCmp",

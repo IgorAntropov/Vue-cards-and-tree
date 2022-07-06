@@ -12,10 +12,10 @@
 </template>
 
 <script>
-import Header from "@/components/Header";
-import LoadIndicator from "@/components/Load-indicator";
-import Body from "@/components/Body";
-import Footer from "@/components/Footer";
+import Header from "@/components/common/Header";
+import LoadIndicator from "@/components/supports/Load-indicator";
+import Body from "@/components/common/Body";
+import Footer from "@/components/common/Footer";
 
 export default {
   name: "App",
@@ -30,34 +30,41 @@ export default {
     Body,
     Footer
   },
+  methods: {
+    render(data) {
+      this.$store.dispatch('UPLOAD_DATA', {data});
+      this.isUpload = true;
+    }
+  },
   mounted() {
-    var self = this;
-    var dataRequest;
     var data;
-    var requestURL = 'http://contest.elecard.ru/frontend_data/catalog.json';
-    var request = new XMLHttpRequest();
 
-    request.open('GET', requestURL);
-    request.responseType = 'json';
-    request.send();
-    request.onload = function() {
-      dataRequest = request.response;
+    if (localStorage.state === undefined) {
+      var self = this;
+      var dataRequest;
+      var requestURL = 'http://contest.elecard.ru/frontend_data/catalog.json';
+      var request = new XMLHttpRequest();
 
-      dataRequest.reduce((accumulator, currentValue) => {
-        let group = currentValue.image.split('/')[0];
-        let number = Math.round((Math.random()));
-        currentValue.image = group + '/leergut_colli_0' + number + '.jpg';
+      request.open('GET', requestURL);
+      request.responseType = 'json';
+      request.send();
+      request.onload = function() {
+        dataRequest = request.response;
 
-        return accumulator;
-      }, []);
+        dataRequest.reduce((accumulator, currentValue) => {
+          let group = currentValue.image.split('/')[0];
+          let number = Math.round((Math.random()));
+          currentValue.image = group + '/leergut_colli_0' + number + '.jpg';
 
-      data = localStorage.state !== undefined
-          ? JSON.parse(localStorage.getItem('state'))
-          : dataRequest;
+          return accumulator;
+        }, []);
 
-      self.$store.dispatch('UPLOAD_DATA', {data});
-
-      self.isUpload = true;
+        data = dataRequest;
+        self.render(data);
+      }
+    } else {
+      data = JSON.parse(localStorage.getItem('state'));
+      this.render(data);
     }
   }
 }

@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import CardItem from "@/components/Card-item";
+import CardItem from "@/components/cards/Card-item";
 
 export default {
   name: "CardsCmp",

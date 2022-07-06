@@ -31,7 +31,7 @@ export default createStore({
         return accumulator;
       }, []);
 
-      localStorage.setItem('state', JSON.stringify(state.data));
+      localStorage.removeItem('state');
     },
     UPLOAD_DATA: (state, payload) => {
       state.data = payload.data;

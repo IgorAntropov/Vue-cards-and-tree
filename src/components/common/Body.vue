@@ -25,8 +25,8 @@
 </template>
 
 <script>
-import Node from "@/components/Node";
-import Cards from "@/components/Cards";
+import Node from "@/components/tree/Node";
+import Cards from "@/components/cards/Cards";
 
 export default {
   name: "BodyCmp",
